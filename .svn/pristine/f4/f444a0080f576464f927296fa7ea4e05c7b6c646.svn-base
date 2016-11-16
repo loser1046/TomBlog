@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Creating Modal Window with Twitter Bootstrap">
+        <link href="/twitter-bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap.css" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__ . /TomBlogs/Css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__ . /TomBlogs/Css/bootstrap-responsive.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__ . /TomBlogs/Css/style.css" />
+        <script type="text/javascript" src="__PUBLIC__ . /TomBlogs/Js/jquery2.js"></script>
+        <script type="text/javascript" src="__PUBLIC__ . /TomBlogs/Js/jquery2.sorted.js"></script>
+        <script type="text/javascript" src="__PUBLIC__ . /TomBlogs/Js/bootstrap.js"></script>
+        <script type="text/javascript" src="__PUBLIC__ . /TomBlogs/Js/ckform.js"></script>
+        <script type="text/javascript" src="__PUBLIC__ . /TomBlogs/Js/common.js"></script>
+
+        <style type="text/css">
+            body {
+                padding-bottom: 40px;
+                background-color:#e9e7ef;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+             #pagelist{
+     text-align:center; background:#f1f1f1; padding:7px 0;
+ }
+ 
+ #pagelist a{
+     margin:0 5px; border:#6185a2 solid 1px; display:inline-block; padding:2px 6px 1px; line-height:16px; background:#fff; color:#6185a2;
+ }
+ 
+ #pagelist span{
+     margin:0 5px; border:#6185a2 solid 1px; display:inline-block; padding:2px 6px 1px; line-height:16px; color:#6185a2; color:#fff; background:#6185a2;
+ }
+
+            @media (max-width: 980px) {
+                /* Enable use of floated navbar text */
+                .navbar-text.pull-right {
+                    float: none;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+            /*{:U('admin/boss/afficheAdd')}*/
+
+        </style>
+    </head>
+    <body>
+        <form class="form-inline definewidth m20" action="#" method="get">
+            <font color="#33ccff"><strong>公告标题：</strong></font>
+            <input type="text" name="menuname" id="menuname"class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 
+            <button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp; <a href="{:U('admin/boss/afficheAdd')}"><button type="button" class="btn btn-success" id="addnew">添加公告</button></a>
+        </form>
+        <table class="table table-bordered table-hover definewidth m10">
+            <thead>
+                <tr>
+                    <th>公告标题</th>
+                    <th>详情</th>
+                    <th>公告图片</th>
+                    <th>发布时间</th>
+                    <th>失效时间</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <volist name="list" id="lvo">
+                <tr>
+                    <td>{$lvo.公告标题}</td>
+                    <td><a href="#" id="{$lvo.id}"  rel="popover"  data-original-title="公告标题" data-content="{$lvo.内容}">详情</a>
+                    <td>{$lvo.thumb}</td>
+                    <td>{$lvo.发布时间}</td>
+                    <td>{$lvo.失效时间}</td>
+                    <td><a href="{:U('admin/boss/placardEdit','id='.$lvo['id'])}">修改</a></td>
+                    <td><a href="{:U('admin/boss/delete','id='.$lvo['id'])}">删除</a></td>
+                </tr>
+                <script>
+                    $(function () {
+                        $("#{$lvo.id}").popover();
+                    });
+                </script>
+            </volist>
+        </table>
+        <div id="pagelist">{$page}</div>
+    </body>
+</html>
+<script src="__PUBLIC__ . /TomBlogs/js/jquery.min.js"></script>
+<script src="__PUBLIC__ . /TomBlogs/js/bootstrap-tooltip.js"></script>
+<script src="__PUBLIC__ . /TomBlogs/js/bootstrap-popover.js"></script>
+
